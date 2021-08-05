@@ -34,41 +34,43 @@
             Grid.Column="1"
             Source="/Images/50897.png" />
 
-        <!--<TextBox
+        <TextBox
             Grid.Row="0"
             Grid.Column="0"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             BorderThickness="0"
             FontSize="36"
-            Text="{Binding CurrencyLeft.Quantity, UpdateSourceTrigger=PropertyChanged}" />-->
+            Text="{Binding CurrencyLeft.Quantity, UpdateSourceTrigger=PropertyChanged}" />
 
-        <!--<TextBox
+        <TextBox
             Grid.Row="0"
             Grid.Column="2"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             BorderThickness="0"
             FontSize="36"
-            Text="{Binding CurrencyRight.Quantity, Mode=TwoWay}" />-->
+            Text="{Binding CurrencyRight.Quantity, Mode=TwoWay}" />
 
-        <!--<TextBox
+        <TextBox
+            IsReadOnly="True"
             Grid.Row="1"
             Grid.Column="0"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             BorderThickness="0"
             FontSize="36"
-            Text="{Binding CurrencyLeft.CharCode, UpdateSourceTrigger=PropertyChanged}" />-->
+            Text="{Binding CurrencyLeft.CharCode, UpdateSourceTrigger=PropertyChanged}" />
 
-        <!--<TextBox
+        <TextBox
+            IsReadOnly="True"
             Grid.Row="1"
             Grid.Column="2"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             BorderThickness="0"
             FontSize="36"
-            Text="{Binding CurrencyRight.CharCode, Mode=TwoWay}" />-->
+            Text="{Binding CurrencyRight.CharCode, Mode=TwoWay}" />
 
         <Button
             Grid.Row="2"

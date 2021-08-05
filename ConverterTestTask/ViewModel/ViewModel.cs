@@ -52,7 +52,7 @@ namespace ConverterTestTask.ViewModel
                 Quantity = 1
             });
 
-            for (int i = 1; i < p.Length + 1; i++)
+            for (int i = 0; i < p.Length; i++)
             {
                 Currencies.Add(new Currency { 
                     Name = p.name[i], 

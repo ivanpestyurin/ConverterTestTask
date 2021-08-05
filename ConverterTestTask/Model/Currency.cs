@@ -12,8 +12,8 @@ namespace ConverterTestTask.Model
         private string name;
         private string charCode;
         private double rate;
-        private double quantity = 0;//
-        private int nominal = 0;//
+        private double quantity = 1;//
+        private int nominal;//
 
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string propertyName)
