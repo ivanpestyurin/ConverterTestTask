@@ -10,11 +10,11 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
 
-    <Page.DataContext>
+    <!--<Page.DataContext>
         <local:ViewModel />
-    </Page.DataContext>
+    </Page.DataContext>-->
 
-    <Grid>
+    <Grid Background="#FFB2AEAE">
         <Grid.RowDefinitions>
             <RowDefinition />
             <RowDefinition />
@@ -32,7 +32,30 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-        
+        <TextBlock
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            FontSize="30"
+            Text="Бубль"
+            TextWrapping="Wrap" />
+
+        <TextBlock
+            Grid.Row="0"
+            Grid.Column="3"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            FontSize="30"
+            Foreground="#7F000000"
+            Text="BUB"
+            TextWrapping="Wrap" />
+
+        <Image
+            Grid.Row="0"
+            Grid.Column="4"
+            Source="/Images/CheckMark.ico" />
 
     </Grid>
 </Page>

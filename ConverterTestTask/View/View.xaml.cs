@@ -25,6 +25,8 @@ namespace ConverterTestTask.View
         public View()
         {
             this.InitializeComponent();
+
+            DataContext = new ViewModel.ViewModel();
         }
     }
 }

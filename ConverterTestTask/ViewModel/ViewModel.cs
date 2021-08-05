@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Runtime.CompilerServices;
 using System.Collections.ObjectModel;
 using ConverterTestTask.Model;
+using ConverterTestTask.Utilities;
 
 namespace ConverterTestTask.ViewModel
 {
@@ -39,10 +40,30 @@ namespace ConverterTestTask.ViewModel
         public ViewModel()
         {
             Currencies = new ObservableCollection<Currency>();//
-            for (int i = 0; i < 10; i++)
+
+            Parser p = new Parser();
+
+            Currencies.Add(new Currency
             {
-                Currencies.Add(new Currency { Name = "a", CharCode = "b", Value = 4 });
+                Name = "Рубль",
+                CharCode = "RUB",
+                Rate = 1,
+                Nominal = 1,
+                Quantity = 1
+            });
+
+            for (int i = 1; i < p.Length + 1; i++)
+            {
+                Currencies.Add(new Currency { 
+                    Name = p.name[i], 
+                    CharCode = p.charCode[i], 
+                    Rate = p.rate[i],
+                    Nominal = p.nominal[i],
+                    Quantity = 1
+                });
             }
+            currencyLeft = Currencies[0];
+            currencyRight = Currencies[1];
         }
 
         //private double leftValue = 0;

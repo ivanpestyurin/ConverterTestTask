@@ -11,8 +11,9 @@ namespace ConverterTestTask.Model
     {
         private string name;
         private string charCode;
-        private double value;
+        private double rate;
         private double quantity = 0;//
+        private int nominal = 0;//
 
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string propertyName)
@@ -47,16 +48,16 @@ namespace ConverterTestTask.Model
                 OnPropertyChanged("CharCode");
             }
         }
-        public double Value
+        public double Rate
         {
             get
             {
-                return value;
+                return rate;
             }
             set
             {
-                this.value = value;
-                OnPropertyChanged("Value");
+                rate = value;
+                OnPropertyChanged("Rate");
             }
         }
         public double Quantity
@@ -69,6 +70,18 @@ namespace ConverterTestTask.Model
             {
                 quantity = value;
                 OnPropertyChanged("Quantity");
+            }
+        }
+        public int Nominal
+        {
+            get
+            {
+                return nominal;
+            }
+            set
+            {
+                nominal = value;
+                OnPropertyChanged("Nominal");
             }
         }
     }
