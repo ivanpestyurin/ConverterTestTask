@@ -121,6 +121,7 @@
     </Compile>
     <Compile Include="Model\Currency.cs" />
     <Compile Include="Utilities\Parser.cs" />
+    <Compile Include="ViewModel\ChoiceModel.cs" />
     <Compile Include="View\ChoicePage.xaml.cs">
       <DependentUpon>ChoicePage.xaml</DependentUpon>
     </Compile>

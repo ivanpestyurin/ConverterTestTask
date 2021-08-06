@@ -35,23 +35,26 @@
             Source="/Images/50897.png" />
 
         <TextBox
-            Grid.Row="0"
             Grid.Column="0"
+            Width="124"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             BorderThickness="0"
-            FontSize="36"
+            FontSize="24"
             Text="{Binding CurrencyLeft.Quantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            TextAlignment="Start"
             TextChanged="TextBox_TextChanged" />
 
         <TextBox
             Grid.Row="0"
             Grid.Column="2"
+            Width="124"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             BorderThickness="0"
-            FontSize="36"
+            FontSize="24"
             Text="{Binding CurrencyRight.Quantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            TextAlignment="Left"
             TextChanged="TextBox_TextChanged_1" />
 
         <TextBox
@@ -96,6 +99,7 @@
             Height="61"
             HorizontalAlignment="Center"
             Background="#00000000"
+            Click="Button_Click_1"
             FontSize="12"
             Foreground="#FF007AF3">
             <TextBlock

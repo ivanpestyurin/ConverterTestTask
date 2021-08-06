@@ -13,6 +13,9 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using ConverterTestTask.View;
+using ConverterTestTask.ViewModel;
+using Windows.UI.Popups;
+
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
 namespace ConverterTestTask.View
@@ -22,9 +25,19 @@ namespace ConverterTestTask.View
     /// </summary>
     public sealed partial class ChoicePage : Page
     {
+        ViewModelBase viewModel;
         public ChoicePage()
         {
             this.InitializeComponent();
+
+            viewModel = new ViewModel.ViewModel();
+
+            DataContext = viewModel;
+        }
+
+        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Frame.Navigate(typeof(View), viewModel.SelectedCurrency);
         }
     }
 }

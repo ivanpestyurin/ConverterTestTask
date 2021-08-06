@@ -17,22 +17,28 @@
         <Grid x:Name="ElementsGrid" Background="#FFB2AEAE">
             <Grid.RowDefinitions>
                 <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
-                <ColumnDefinition />
-                <ColumnDefinition />
-                <ColumnDefinition />
-                <ColumnDefinition />
             </Grid.ColumnDefinitions>
 
-            <TextBlock
+            <ListBox
+                Grid.Row="0"
+                Grid.Column="0"
+                ItemsSource="{Binding Currencies}"
+                SelectedItem="{Binding SelectedCurrency, Mode=TwoWay}"
+                SelectionChanged="ListBox_SelectionChanged">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Margin="5">
+                            <TextBlock Text="{Binding Name, Mode=TwoWay}" />
+                            <TextBlock Text="{Binding CharCode, Mode=TwoWay}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+            <!--<TextBlock
                 Grid.Row="0"
                 Grid.Column="0"
                 Grid.ColumnSpan="3"
@@ -55,7 +61,7 @@
             <CheckBox
                 Grid.Row="0"
                 Grid.Column="4"
-                Margin="20,0,0,0" />
+                Margin="20,0,0,0" />-->
 
 
 
