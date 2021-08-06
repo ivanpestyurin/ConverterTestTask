@@ -13,49 +13,57 @@
     <!--<Page.DataContext>
         <local:ViewModel />
     </Page.DataContext>-->
+    <ScrollViewer Width="300" Height="500">
+        <Grid x:Name="ElementsGrid" Background="#FFB2AEAE">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
 
-    <Grid Background="#FFB2AEAE">
-        <Grid.RowDefinitions>
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-            <ColumnDefinition />
-            <ColumnDefinition />
-            <ColumnDefinition />
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
+            <TextBlock
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="3"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                FontSize="30"
+                Text="Бубль"
+                TextWrapping="Wrap" />
 
-        <TextBlock
-            Grid.Row="0"
-            Grid.Column="0"
-            Grid.ColumnSpan="3"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            FontSize="30"
-            Text="Бубль"
-            TextWrapping="Wrap" />
+            <TextBlock
+                Grid.Row="0"
+                Grid.Column="3"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                FontSize="30"
+                Foreground="#7F000000"
+                Text="BUB"
+                TextWrapping="Wrap" />
 
-        <TextBlock
-            Grid.Row="0"
-            Grid.Column="3"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            FontSize="30"
-            Foreground="#7F000000"
-            Text="BUB"
-            TextWrapping="Wrap" />
+            <CheckBox
+                Grid.Row="0"
+                Grid.Column="4"
+                Margin="20,0,0,0" />
 
-        <Image
-            Grid.Row="0"
-            Grid.Column="4"
-            Source="/Images/CheckMark.ico" />
 
-    </Grid>
+
+            <!--<Image
+                Grid.Row="0"
+                Grid.Column="4"
+                Source="/Images/CheckMark.ico" />-->
+
+        </Grid>
+    </ScrollViewer>
 </Page>

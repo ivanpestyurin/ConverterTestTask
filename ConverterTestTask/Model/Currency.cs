@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Popups;
 
 namespace ConverterTestTask.Model
 {
@@ -12,7 +13,7 @@ namespace ConverterTestTask.Model
         private string name;
         private string charCode;
         private double rate;
-        private double quantity = 1;//
+        private double quantity;//
         private int nominal;//
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -60,18 +61,6 @@ namespace ConverterTestTask.Model
                 OnPropertyChanged("Rate");
             }
         }
-        public double Quantity
-        {
-            get
-            {
-                return quantity;
-            }
-            set
-            {
-                quantity = value;
-                OnPropertyChanged("Quantity");
-            }
-        }
         public int Nominal
         {
             get
@@ -82,6 +71,19 @@ namespace ConverterTestTask.Model
             {
                 nominal = value;
                 OnPropertyChanged("Nominal");
+            }
+        }
+        public double Quantity
+        {
+            get
+            {
+                return quantity;
+            }
+            set
+            {
+                quantity = value;
+                OnPropertyChanged("Quantity");
+
             }
         }
     }

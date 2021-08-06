@@ -7,63 +7,95 @@ using System.Runtime.CompilerServices;
 using System.Collections.ObjectModel;
 using ConverterTestTask.Model;
 using ConverterTestTask.Utilities;
+using Windows.UI.Popups;
 
 namespace ConverterTestTask.ViewModel
 {
     public class ViewModel : ViewModelBase
     {
         //private Converter converter;
-
+        public Parser p;
         private Currency currencyLeft;
         private Currency currencyRight;
         public ObservableCollection<Currency> Currencies { get; set; }
 
         public Currency CurrencyLeft
         {
-            get { return currencyLeft; }
+            get
+            {
+                return currencyLeft;
+            }
             set
             {
                 currencyLeft = value;
                 OnPropertyChanged("CurrencyLeft");
+                Count(CurrencyLeft);
             }
         }
         public Currency CurrencyRight
         {
-            get { return currencyRight; }
+            get 
+            {
+                return currencyRight; 
+            }
             set
             {
+                //QQ();
                 currencyRight = value;
                 OnPropertyChanged("CurrencyRight");
+                Count1(CurrencyRight);
+                //Count(CurrencyRight, CurrencyLeft);
             }
+        }
+        private void QQ()
+        {
+            var dialog = new MessageDialog("No internet connection has been found.");
+            dialog.Commands.Add(new UICommand("Yes", null));
+            dialog.Commands.Add(new UICommand("No", null));
+            dialog.DefaultCommandIndex = 0;
+            dialog.CancelCommandIndex = 1;
+            var cmd = dialog.ShowAsync();
+        }
+
+        public void Count(Currency currency)
+        {
+            CurrencyRight.Quantity = currency.Quantity * currency.Rate / CurrencyRight.Rate;
+        }
+
+        public void Count1(Currency currency)
+        {
+            currencyLeft.Quantity = currency.Quantity * currency.Rate / currencyLeft.Rate;
         }
 
         public ViewModel()
         {
-            Currencies = new ObservableCollection<Currency>();//
+            p = new Parser();
 
-            Parser p = new Parser();
-
-            Currencies.Add(new Currency
+            Currencies = new ObservableCollection<Currency>
             {
-                Name = "Рубль",
-                CharCode = "RUB",
-                Rate = 1,
-                Nominal = 1,
-                Quantity = 1
-            });
+                new Currency
+                {
+                    Name = "Рубль",
+                    CharCode = "RUB",
+                    Rate = 1,
+                    Nominal = 1,
+                    Quantity = 1
+                }
+            };
 
             for (int i = 0; i < p.Length; i++)
             {
-                Currencies.Add(new Currency { 
-                    Name = p.name[i], 
-                    CharCode = p.charCode[i], 
+                Currencies.Add(new Currency
+                {
+                    Name = p.name[i],
+                    CharCode = p.charCode[i],
                     Rate = p.rate[i],
                     Nominal = p.nominal[i],
                     Quantity = 1
                 });
             }
-            currencyLeft = Currencies[0];
-            currencyRight = Currencies[1];
+            currencyLeft = Currencies[11];
+            currencyRight = Currencies[0];
         }
 
         //private double leftValue = 0;
