@@ -26,18 +26,24 @@ namespace ConverterTestTask.View
     public sealed partial class ChoicePage : Page
     {
         ViewModelBase viewModel;
+        int i = 0;
         public ChoicePage()
         {
             this.InitializeComponent();
 
-            viewModel = new ViewModel.ViewModel();
-
-            DataContext = viewModel;
+            DataContext = new ChoiceModel();
+        }
+        
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            if (e.Parameter != null)
+                viewModel = (ViewModelBase)e.Parameter;
         }
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Frame.Navigate(typeof(View), viewModel.SelectedCurrency);
+            viewModel.SelectedCurrency = ((ChoiceModel)DataContext).SelectedCurrency;
+            Frame.Navigate(typeof(View), viewModel);
         }
     }
 }

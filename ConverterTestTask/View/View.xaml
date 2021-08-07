@@ -84,6 +84,7 @@
             HorizontalAlignment="Center"
             Background="#00000000"
             Click="Button_Click"
+            Command="{Binding LeftButtonCommand}"
             FontSize="12"
             Foreground="#FF007AF3">
             <TextBlock
@@ -100,6 +101,7 @@
             HorizontalAlignment="Center"
             Background="#00000000"
             Click="Button_Click_1"
+            Command="{Binding RightButtonCommand}"
             FontSize="12"
             Foreground="#FF007AF3">
             <TextBlock

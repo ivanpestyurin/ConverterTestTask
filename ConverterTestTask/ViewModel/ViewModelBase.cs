@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using ConverterTestTask.Model;
 using ConverterTestTask.Utilities;
+using Windows.UI.Core;
 
 namespace ConverterTestTask.ViewModel
 {
@@ -15,6 +18,7 @@ namespace ConverterTestTask.ViewModel
         private Currency currencyLeft;
         private Currency currencyRight;
         private Currency selectedCurrency;
+        public bool isLeft;
         public ObservableCollection<Currency> Currencies { get; set; }
 
         public Currency SelectedCurrency
@@ -60,16 +64,19 @@ namespace ConverterTestTask.ViewModel
 
         public void Count(Currency currency)
         {
-            CurrencyRight.Quantity = currency.Quantity * currency.Rate / CurrencyRight.Rate;
+            CurrencyRight.Quantity =  ((currency.Quantity * currency.Rate) / currency.Nominal) 
+                / (CurrencyRight.Rate / CurrencyRight.Nominal);
         }
 
         public void Count1(Currency currency)
         {
-            currencyLeft.Quantity = currency.Quantity * currency.Rate / currencyLeft.Rate;
+            currencyLeft.Quantity = ((currency.Quantity * currency.Rate) / currency.Nominal)
+                / (CurrencyLeft.Rate / CurrencyLeft.Nominal);
         }
 
         public ViewModelBase()
         {
+
             Parser p = new Parser();
 
             Currencies = new ObservableCollection<Currency>
@@ -95,11 +102,13 @@ namespace ConverterTestTask.ViewModel
                     Quantity = 1
                 });
             }
-            currencyLeft = Currencies[11];
-            currencyRight = Currencies[0];
+            currencyLeft = Currencies[11];//
+            currencyRight = Currencies[0];//
             Count(CurrencyLeft);
         }
+
         public event PropertyChangedEventHandler PropertyChanged;
+
         protected void OnPropertyChanged(string propertyName)
         {
             if (PropertyChanged != null)

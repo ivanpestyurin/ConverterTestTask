@@ -17,6 +17,10 @@ using ConverterTestTask.Model;
 using System.Drawing;
 using Windows.UI;
 using Windows.UI.Xaml.Media.Imaging;
+using Windows.ApplicationModel.Core;
+using Windows.UI.ViewManagement;
+using Windows.UI.Core;
+using Windows.UI.Popups;
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
 namespace ConverterTestTask.View
@@ -26,32 +30,28 @@ namespace ConverterTestTask.View
     /// </summary>
     public sealed partial class View : Page
     {
-        ViewModelBase viewModel;
         public View()
         {
             this.InitializeComponent();
 
-            viewModel = new ViewModel.ViewModel();
-
-            DataContext = viewModel;
-
+            DataContext = new ViewModel.ViewModel();
         }
-
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             if (e.Parameter != null)
             {
+                DataContext = (ViewModel.ViewModel)e.Parameter;
 
-                if (viewModel.SelectedCurrency == viewModel.CurrencyLeft)
+                if (((ViewModel.ViewModel)DataContext).isLeft)
                 {
-                    viewModel.SelectedCurrency = (Currency)e.Parameter;
-                    viewModel.CurrencyLeft = viewModel.SelectedCurrency;
+                    ((ViewModel.ViewModel)DataContext).SelectedCurrency = ((ViewModel.ViewModel)e.Parameter).SelectedCurrency;
+                    ((ViewModel.ViewModel)DataContext).CurrencyLeft = ((ViewModel.ViewModel)DataContext).SelectedCurrency;
                 }
                 else
                 {
-                    viewModel.SelectedCurrency = (Currency)e.Parameter;
-                    viewModel.CurrencyRight = viewModel.SelectedCurrency;
+                    ((ViewModel.ViewModel)DataContext).SelectedCurrency = ((ViewModel.ViewModel)e.Parameter).SelectedCurrency;
+                    ((ViewModel.ViewModel)DataContext).CurrencyRight = ((ViewModel.ViewModel)DataContext).SelectedCurrency;
                 }
                 
             }
@@ -60,14 +60,14 @@ namespace ConverterTestTask.View
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            viewModel.SelectedCurrency = viewModel.CurrencyLeft;
-            Frame.Navigate(typeof(ChoicePage));
+            ((ViewModel.ViewModel)DataContext).isLeft = true;
+            Frame.Navigate(typeof(ChoicePage), (ViewModel.ViewModel)DataContext);
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            viewModel.SelectedCurrency = viewModel.CurrencyRight;
-            Frame.Navigate(typeof(ChoicePage));
+            ((ViewModel.ViewModel)DataContext).isLeft = false;
+            Frame.Navigate(typeof(ChoicePage), (ViewModel.ViewModel)DataContext);
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -77,7 +77,7 @@ namespace ConverterTestTask.View
 
             if (double.TryParse(tb.Text, out tmp))
             {
-                viewModel.CurrencyLeft = viewModel.CurrencyLeft;
+                ((ViewModel.ViewModel)DataContext).CurrencyLeft = ((ViewModel.ViewModel)DataContext).CurrencyLeft;
             }
         }
 
@@ -87,7 +87,7 @@ namespace ConverterTestTask.View
             double tmp;
             if (double.TryParse(tb.Text, out tmp))
             {
-                viewModel.CurrencyRight = viewModel.CurrencyRight;
+                ((ViewModel.ViewModel)DataContext).CurrencyRight = ((ViewModel.ViewModel)DataContext).CurrencyRight;
             }
         }
 

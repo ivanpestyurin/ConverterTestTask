@@ -24,7 +24,10 @@ namespace ConverterTestTask.Model
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
+        public void func()
+        {
 
+        }
         public string Name
         {
             get
