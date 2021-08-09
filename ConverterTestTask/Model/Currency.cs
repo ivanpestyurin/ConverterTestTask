@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Windows.UI.Popups;
+﻿using System.ComponentModel;
 
 namespace ConverterTestTask.Model
 {
@@ -13,21 +7,15 @@ namespace ConverterTestTask.Model
         private string name;
         private string charCode;
         private double rate;
-        private double quantity;//
-        private int nominal;//
+        private double quantity;
+        private int nominal;
 
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string propertyName)
         {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        public void func()
-        {
 
-        }
         public string Name
         {
             get
@@ -86,7 +74,6 @@ namespace ConverterTestTask.Model
             {
                 quantity = value;
                 OnPropertyChanged("Quantity");
-
             }
         }
     }

@@ -5,71 +5,55 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:ConverterTestTask.ViewModel"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Width="300"
-    Height="500"
+    Width="400"
+    Height="600"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
 
     <!--<Page.DataContext>
         <local:ViewModel />
     </Page.DataContext>-->
-    <ScrollViewer Width="300" Height="500">
-        <Grid x:Name="ElementsGrid" Background="#FFB2AEAE">
-            <Grid.RowDefinitions>
-                <RowDefinition />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
-
+    <ScrollViewer>
+        <StackPanel x:Name="ElementsGrid" Background="#FFB2AEAE">
             <ListBox
-                Grid.Row="0"
-                Grid.Column="0"
+                x:Name="listBox"
                 ItemsSource="{Binding Currencies}"
                 SelectedItem="{Binding SelectedCurrency, Mode=TwoWay}"
                 SelectionChanged="ListBox_SelectionChanged">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel Margin="5">
-                            <TextBlock Text="{Binding Name, Mode=TwoWay}" />
-                            <TextBlock Text="{Binding CharCode, Mode=TwoWay}" />
-                        </StackPanel>
+                        <Grid Width="400" Margin="5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock
+                                Grid.Column="0"
+                                Grid.ColumnSpan="3"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Text="{Binding Name, Mode=TwoWay}"
+                                TextWrapping="Wrap" />
+                            <TextBlock
+                                Grid.Column="3"
+                                Grid.ColumnSpan="1"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Text="{Binding CharCode, Mode=TwoWay}" />
+                            <!--<CheckBox
+                                x:Name="checkBox1"
+                                Grid.Column="4"
+                                Grid.ColumnSpan="1" />-->
+                        </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-
-            <!--<TextBlock
-                Grid.Row="0"
-                Grid.Column="0"
-                Grid.ColumnSpan="3"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                FontSize="30"
-                Text="Бубль"
-                TextWrapping="Wrap" />
-
-            <TextBlock
-                Grid.Row="0"
-                Grid.Column="3"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                FontSize="30"
-                Foreground="#7F000000"
-                Text="BUB"
-                TextWrapping="Wrap" />
-
-            <CheckBox
-                Grid.Row="0"
-                Grid.Column="4"
-                Margin="20,0,0,0" />-->
-
-
-
-            <!--<Image
-                Grid.Row="0"
-                Grid.Column="4"
-                Source="/Images/CheckMark.ico" />-->
-
-        </Grid>
+        </StackPanel>
     </ScrollViewer>
 </Page>

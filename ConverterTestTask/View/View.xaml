@@ -8,14 +8,13 @@
     Width="400"
     Height="600"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    SizeChanged="Page_SizeChanged"
     mc:Ignorable="d">
 
-    <!--<Page.DataContext>
-        <local:ViewModel />
-    </Page.DataContext>-->
-
-    <Grid x:Name="layoutGrid" Background="White">
+    <Grid x:Name="layoutGrid">
         <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
             <RowDefinition />
             <RowDefinition />
             <RowDefinition />
@@ -26,33 +25,37 @@
             <ColumnDefinition />
             <ColumnDefinition />
             <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
         <Image
             Grid.Row="0"
             Grid.RowSpan="2"
-            Grid.Column="1"
+            Grid.Column="2"
             Source="/Images/50897.png" />
 
         <TextBox
+            x:Name="textBox1"
             Grid.Column="0"
-            Width="124"
+            Grid.ColumnSpan="2"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             BorderThickness="0"
-            FontSize="24"
+            FontSize="28"
             Text="{Binding CurrencyLeft.Quantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
             TextAlignment="Start"
-            TextChanged="TextBox_TextChanged" />
+            TextChanged="TextBox_TextChanged" Width="124" />
 
         <TextBox
-            Grid.Row="0"
-            Grid.Column="2"
+            x:Name="textBox2"
+            Grid.Column="3"
+            Grid.ColumnSpan="2"
             Width="124"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             BorderThickness="0"
-            FontSize="24"
+            FontSize="28"
             Text="{Binding CurrencyRight.Quantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
             TextAlignment="Left"
             TextChanged="TextBox_TextChanged_1" />
@@ -60,32 +63,36 @@
         <TextBox
             Grid.Row="1"
             Grid.Column="0"
+            Grid.ColumnSpan="2"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             BorderThickness="0"
-            FontSize="36"
+            FontSize="28"
             IsReadOnly="True"
             Text="{Binding CurrencyLeft.CharCode, UpdateSourceTrigger=PropertyChanged}" />
 
         <TextBox
             Grid.Row="1"
-            Grid.Column="2"
+            Grid.Column="3"
+            Grid.ColumnSpan="2"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             BorderThickness="0"
-            FontSize="36"
+            FontSize="28"
             IsReadOnly="True"
             Text="{Binding CurrencyRight.CharCode, Mode=TwoWay}" />
 
         <Button
             Grid.Row="2"
-            Width="80"
-            Height="61"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Width="132"
+            Height="75"
             HorizontalAlignment="Center"
             Background="#00000000"
             Click="Button_Click"
             Command="{Binding LeftButtonCommand}"
-            FontSize="12"
+            FontSize="20"
             Foreground="#FF007AF3">
             <TextBlock
                 Text="Изменить валюту"
@@ -95,14 +102,15 @@
 
         <Button
             Grid.Row="2"
-            Grid.Column="2"
-            Width="80"
-            Height="61"
+            Grid.Column="3"
+            Grid.ColumnSpan="2"
+            Width="134"
+            Height="69"
             HorizontalAlignment="Center"
             Background="#00000000"
             Click="Button_Click_1"
             Command="{Binding RightButtonCommand}"
-            FontSize="12"
+            FontSize="20"
             Foreground="#FF007AF3">
             <TextBlock
                 Text="Изменить валюту"
